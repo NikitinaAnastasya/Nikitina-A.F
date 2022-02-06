@@ -6,10 +6,10 @@ public class Zadanie3 {
 		if(n==2) {
 		int a=Integer.parseInt(args[0]);
 		int b=Integer.parseInt(args[1]);
-		System.out.println("параметры: "+args[0]+ ", "+ args[1]);
-		System.out.println("Сумма параметров: "+(a+b));
+		System.out.println("Parametry: "+args[0]+ ", "+ args[1]);
+		System.out.println("Summa parametrov: "+(a+b));
 		}
 		else {
-			System.out.println("Неверное количество параметров");
+			System.out.println("Nevernoe kolicestvo parametrov");
 		}
 }}
