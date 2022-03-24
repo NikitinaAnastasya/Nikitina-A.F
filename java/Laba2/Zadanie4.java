@@ -24,11 +24,11 @@ public class Zadanie4 {
 		}
 		System.out.println();
 		//naxogdenie pobochnoy diagonali
-				for (int i=n-1,j=0;j<n;i--,j++) {
-					if (matr[i][j]>0) {
-						sum+=matr[i][j];
-						kol+=1;
-						System.out.print(matr[i][j] + "\t");
+			for (int i=n-1,j=0;j<n;i--,j++) {
+				if (matr[i][j]>0) {
+					sum+=matr[i][j];
+					kol+=1;
+					System.out.print(matr[i][j] + "\t");
 					}
 				}
 			System.out.println();
