@@ -9,14 +9,14 @@ public class Zadanie4 {
 		int[][] matr = new int [n][n];
 		int sum=0;
 		int kol=0;
-		//заполнение матрицы
+		//zapolnenie matr
 		for (int i = 0;i<n;i++) {
 			for(int j=0;j<n;j++) {
 				matr[i][j]=new Random().nextInt(20)-10;
 			}
 		}
 		
-		//вывод матрицы
+		//vyvod matr
 		for (int i=0; i<n;i++) {
 			for (int j=0;j<n;j++) {
 				System.out.print(matr[i][j] + "\t");
@@ -24,7 +24,7 @@ public class Zadanie4 {
 			System.out.println();
 		}
 		System.out.println();
-		//нахождение побочки
+		//naxogdenie pobochnoy diagonali
 				for (int i=n-1,j=0;j<n;i--,j++) {
 					if (matr[i][j]>0) {
 						sum+=matr[i][j];

@@ -4,24 +4,24 @@ public class Zadanie2 {
 	public static void main(String[] args) {
 	Scanner in = new Scanner(System.in);
 		
-	//размер матрицы
+	//razmer matr
 		System.out.print("n= ");
 		int n = in.nextInt();
 		int[] a = new int [n];
 		int[] m = new int [n];
 		int s=0;
-	//ввод матрицы
+	//vvod matr
 		for (int i=0;i<n;i++) {
 			a [i] = in.nextInt();
 		}
-	//перемещение положительных цифр
+	//peremechenie pologitelnyx chisel
 		for (int i=0;i<n;i++) {
 			if (a [i]>0) {
 				m[s]=a[i];
 				s+=1;
 			}
 		}
-	//вывод сокращенной матрицы
+	//vyvod cokr matr
 		int[] b = new int [s];
 		for (int i=0;i<s;i++) {
 			b[i]=m[i]/3;

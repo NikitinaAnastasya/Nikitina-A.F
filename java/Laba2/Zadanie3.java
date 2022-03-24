@@ -11,18 +11,18 @@ public class Zadanie3 {
 		int m = in.nextInt();
 		int[][] matr = new int [n][m];
 
-		//ограничение рандомных чисел
+		//ogran random chisel
 		int min = 0;
 		int max = 100;
 		
-		// заполнение матрицы
+		// zapolnenie matr
 		for (int i = 0; i < n; i++) {
 		    for (int j = 0; j < m; j++) {
 		        matr[i][j]=new Random().nextInt(max - min);
 		    }
 		}
 		
-		//вывод матрицы
+		//vyvod matr
 		for (int i = 0; i < n; i++) {
 		    for (int j = 0; j < m; j++) {
 		        System.out.print(matr[i][j] + "\t");
@@ -30,7 +30,7 @@ public class Zadanie3 {
 		    System.out.println();
 		}
 		
-		//нахождение минимального числа и добавление его в вектор
+		//naxogdenie min chisla u dobav ego v vector
 		for (int j = 0; j<m;j++) {
 			int x=matr[0][j];
 			int h=1;
