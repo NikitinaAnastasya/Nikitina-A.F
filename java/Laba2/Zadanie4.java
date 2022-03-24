@@ -15,7 +15,6 @@ public class Zadanie4 {
 				matr[i][j]=new Random().nextInt(20)-10;
 			}
 		}
-		
 		//vyvod matr
 		for (int i=0; i<n;i++) {
 			for (int j=0;j<n;j++) {
@@ -34,8 +33,6 @@ public class Zadanie4 {
 				}
 			System.out.println();
 			System.out.print(sum/kol);
-		
-		
 		in.close();
 	}
 }

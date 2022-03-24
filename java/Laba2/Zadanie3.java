@@ -14,14 +14,12 @@ public class Zadanie3 {
 		//ogran random chisel
 		int min = 0;
 		int max = 100;
-		
 		// zapolnenie matr
 		for (int i = 0; i < n; i++) {
 		    for (int j = 0; j < m; j++) {
 		        matr[i][j]=new Random().nextInt(max - min);
 		    }
 		}
-		
 		//vyvod matr
 		for (int i = 0; i < n; i++) {
 		    for (int j = 0; j < m; j++) {
@@ -29,7 +27,6 @@ public class Zadanie3 {
 		    }
 		    System.out.println();
 		}
-		
 		//naxogdenie min chisla u dobav ego v vector
 		for (int j = 0; j<m;j++) {
 			int x=matr[0][j];
@@ -41,16 +38,10 @@ public class Zadanie3 {
 			}
 			vec.add(h);
 		}
-		
 		System.out.println();
 		for (int i:vec) {
 			System.out.print(i + "\t");
 		}
-		
-		
-		
-		
-		
 		in.close();
 	}
 }
