@@ -66,6 +66,7 @@ public class Main {
                     }
                     if(s==4){
                         db.showVsePoOtdelam();
+
                     }
                     break;
                 default:

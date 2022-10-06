@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class DataBase {
     Scanner scanner = new Scanner(System.in);
-    private List<Otdel> ot = new ArrayList<>();
+    public List<Otdel> ot = new ArrayList<>();
     private List<Tovar> tov = new ArrayList<>();
+
 
     //Отделы
     void addOtdel(Otdel Otdel) {
@@ -35,29 +36,15 @@ public class DataBase {
             ((Otdel) ot.get(j)).setNazvan(e);
         }
         if (q == 3) {
-            System.out.println("Какое время хотите изменить: 1. Начало работы 2. Конец работы 3. Время работы");
-            int b = scanner.nextInt();
-            if (b == 1) {
-                System.out.println("Введите время начала работы :");
-                System.out.println("Часы и минуты соответсвенно");
-                int cr1 = scanner.nextInt();
-                String cr11 = scanner.next();
-            }
-            if (b == 2) {
-                System.out.println("Введите время конца работы");
-                System.out.println("Часы и минуты соответсвенно");
-                int cr2 = scanner.nextInt();
-                String cr22 = scanner.next();
 
-            }
-            if (b == 3) {
-                System.out.println("Введите время работы");
-                System.out.println(" Начало и конец работы соответственно");
-                int cr1 = scanner.nextInt();
-                String cr11 = scanner.next();
-                int cr2 = scanner.nextInt();
-                String cr22 = scanner.next();
-            }
+            System.out.println("Введите новове время работы: ");
+
+            String cr1 = scanner.next();
+            String cr11=scanner.next();
+            String cr2=scanner.next();
+            String cr22=scanner.next();
+
+            chageTimeWork(j,cr1,cr11,cr2,cr22);
         }
 
     }
@@ -73,10 +60,10 @@ public class DataBase {
         String l = scanner.next();
         System.out.println("Введите часы работы : ");
         System.out.println("Начало работы");
-        int cr1 = scanner.nextInt();
+        String cr1 = scanner.next();
         String cr11 = scanner.next();
         System.out.println("Конец работы ");
-        int cr2 = scanner.nextInt();
+        String cr2 = scanner.next();
         String cr22 = scanner.next();
         Otdel o = new Otdel(l, cr1, cr11, cr2, cr22);
         System.out.println(o);
@@ -132,6 +119,7 @@ public class DataBase {
 
     Tovar newTovar() {
         String s = null;
+        int y=0;
         System.out.println("Введите название товара: ");
         String l = scanner.next();
 
@@ -141,8 +129,9 @@ public class DataBase {
             if (ot.size() != 0) {
                 System.out.println("Выберете отдел");
                 showOtdel();
-                int y = scanner.nextInt();
+                y = scanner.nextInt();
                 s = ((Otdel) ot.get(y)).getNazvan();
+
             } else {
                 System.out.println("Список отделов пуст ");
                 s = null;
@@ -155,21 +144,44 @@ public class DataBase {
         }
         System.out.println("Введите цену товара : ");
         float w = scanner.nextFloat();
+
         Tovar o = new Tovar(l, w, s);
+
+        if (s!=null){
+
+            ot.get(y).setTovar(o);
+        }
         System.out.println(o);
         return o;
     }
 
     void showVsePoOtdelam() {
-        for (int i = 0; i < ot.size(); i++) {
-            System.out.println(((Otdel) ot.get(i)).getNazvan());
-            for (int j = 0; j < tov.size(); j++) {
-                if (((Otdel) ot.get(i)).getNazvan() == ((Tovar) tov.get(j)).getOtdely()) {
-                    System.out.println(((Tovar) tov.get(j)).getNaztov());
-                }
-            }
+        for(int j=0;j<ot.size();j++){
+            System.out.println(((Otdel)ot.get(j)).getNazvan());
+            ot.get(j).getTovar();
+
         }
     }
+
+        //прочие
+    void chageTimeWork(int n,String cr1,String cr11,String cr2, String cr22){
+        if (cr1!=null){
+            ((Otdel)ot.get(n)).setCr1(cr1);
+        }
+        if (cr11!=null){
+            ((Otdel)ot.get(n)).setCr11(cr11);
+        }
+        if (cr2!=null){
+            ((Otdel)ot.get(n)).setCr2(cr2);
+        }
+        if (cr22!=null){
+            ((Otdel)ot.get(n)).setCr22(cr22);
+        }
+
+    }
+
+
+
 
 
 }
