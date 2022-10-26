@@ -1,12 +1,12 @@
 public class Tovar {
     String naztov;
     float cena;
-    String otdely;
+    int kolvo;
 
-    Tovar(String naztov, float cena, String otdely) {
+    Tovar(String naztov, float cena, int kolvo) {
         this.naztov = naztov;
         this.cena = cena;
-        this.otdely = otdely;
+        this.kolvo = kolvo ;
     }
 
     public void setNaztov(String naztov) {
@@ -25,17 +25,17 @@ public class Tovar {
         return cena;
     }
 
-    public void setOtdely(String otdely) {
-        this.otdely = otdely;
+    public void setKolvo(int kolvo) {
+        this.kolvo = kolvo;
     }
 
-    public String getOtdely() {
-        return otdely;
+    public int getKolvo() {
+        return kolvo;
     }
 
-    @Override
-    public String toString() {
-        return naztov + " " + cena + " " + otdely;
+        @Override
+        public String toString() {
+            return naztov + " " + cena + " " + kolvo;
     }
 
 }
