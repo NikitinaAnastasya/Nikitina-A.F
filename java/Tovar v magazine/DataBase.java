@@ -1,3 +1,4 @@
+package test;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -513,6 +514,9 @@ public class DataBase {
             System.out.println(i + " " + tov.get(i).getNaztov());
         }
     }
+    void showTovarVOtdel(){
+
+    }
 
     Tovar newTovar() {
 
@@ -597,9 +601,12 @@ void save(){
 
         PreparedStatement preStatOt = worker.getConnect().prepareStatement(INSERT_Otdel);
         for(int i=0; i< ot.size();i++){
+            String rezultTovar = null;
+            String rezultProd = null;
 
-            String rezultTovar = ot.get(i).splitTovar();
-            String rezultProd = ot.get(i).splitProd();
+                rezultTovar = ot.get(i).splitTovar();
+
+                rezultProd = ot.get(i).splitProd();
 
             preStatOt.setInt(1,i+1);
             preStatOt.setString(2,ot.get(i).getNazvan());
@@ -691,14 +698,13 @@ void loading(){
                 for (int i=0;i< spProd.length;i++){
                     ot.get(a).setProd(spProd[i]);
                 }
-
                 for(int i=0;i<spTovar.length;i++){
                     String[] sp = spTovar[i].split(" ");
                     String nameT=sp[0];
                     float cena= Float.parseFloat(sp[1]);
-                    int skidka= Integer.parseInt(sp[2]);
+                    int kolvo= Integer.parseInt(sp[2]);
 
-                    Tovar s = new Tovar(nameT,cena,skidka);
+                    Tovar s = new Tovar(nameT,cena,kolvo);
                     ot.get(a).setTovar(s);
                 }
 
@@ -738,8 +744,8 @@ void loading(){
             while (resultSetPostav.next()){
 
                 String name = resultSetPostav.getString("namekomp");
-                int tel = resultSetPokyp.getInt("telefon");
-                String tovarLists = resultSetOt.getString("tovarlists");
+                int tel = resultSetPostav.getInt("telefon");
+                String tovarLists = resultSetPostav.getString("tovarlists");
 
                 String[] spTovar= tovarLists.split(",");
 
@@ -762,7 +768,7 @@ void loading(){
 
                 String name = resultSetSklad.getString("nametovar");
                 float cena = resultSetSklad.getFloat("cena");
-                int kolvo = resultSetPostav.getInt("kolvo");
+                int kolvo = resultSetSklad.getInt("kolvo");
 
                 Tovar s= new Tovar(name,cena,kolvo);
                 sklad.add(s);

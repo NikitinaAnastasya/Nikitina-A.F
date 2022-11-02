@@ -1,3 +1,5 @@
+package test;
+
 import java.util.*;
 
 public class Otdel {
@@ -17,6 +19,7 @@ public class Otdel {
         this.tovar.addAll(new ArrayList<>());
         this.prod.addAll(new ArrayList<>());
     }
+
 
     public String splitTovar(){
 

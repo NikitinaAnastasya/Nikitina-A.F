@@ -1,15 +1,18 @@
+package test;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    private static DataBase db= new DataBase();
 
+    public static void main(String[] args) {
+        db.loading();
         menu();
 
     }
     private static void menu(){
         Scanner scanner= new Scanner(System.in);
-        DataBase db= new DataBase();
-        db.loading();
+
         cikl:
         while (true){
             System.out.println();
@@ -139,7 +142,6 @@ public class Main {
                     if(s==10){
                         db.showSklad();
                     }
-
                     break;
                 default:
                     db.save();

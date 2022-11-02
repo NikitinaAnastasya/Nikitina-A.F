@@ -1,3 +1,5 @@
+package test;
+
 public class Tovar {
     String naztov;
     float cena;

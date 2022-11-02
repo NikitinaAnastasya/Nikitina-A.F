@@ -1,3 +1,5 @@
+package test;
+
 public class Prodavec {
     String name;
     int zp;

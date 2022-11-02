@@ -1,3 +1,5 @@
+package test;
+
 public class Pokypatel {
     int nomerTel;
     int skidka;
