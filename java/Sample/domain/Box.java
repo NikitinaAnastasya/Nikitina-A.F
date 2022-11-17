@@ -27,4 +27,13 @@ public class Box {
     public void addFruit(Fruit fruit) {
         fruits.add(fruit);
     }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", fruits=" + fruits +
+                '}';
+    }
 }

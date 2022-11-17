@@ -2,6 +2,7 @@ package ru.vsuet.sample.repository;
 
 import ru.vsuet.sample.domain.Box;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryBoxRepository implements Repository<Box> {
@@ -22,16 +23,16 @@ public class InMemoryBoxRepository implements Repository<Box> {
 
     @Override
     public void save(Box source) {
-
+        boxes.add(source);
     }
 
     @Override
     public void remove(Box target) {
-
+        boxes.removeIf(box -> box.getId().equals(target.getId()));
     }
 
     @Override
     public List<Box> list() {
-        return null;
+        return new ArrayList<>(boxes);
     }
 }
