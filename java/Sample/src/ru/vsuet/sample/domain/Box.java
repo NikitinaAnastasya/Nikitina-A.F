@@ -2,6 +2,7 @@ package ru.vsuet.sample.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Box {
 
@@ -16,6 +17,11 @@ public class Box {
         this.fruits = new ArrayList<>();
     }
 
+    public Box(Long id, String name, List<Fruit> fruits) {
+        this(id, name);
+        this.fruits = fruits;
+    }
+
     public Long getId() {
         return id;
     }
@@ -24,8 +30,21 @@ public class Box {
         return name;
     }
 
-    public void addFruit(Fruit fruit) {
-        fruits.add(fruit);
+    public List<Fruit> getFruits() {
+        return fruits;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Box box = (Box) o;
+        return Objects.equals(id, box.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

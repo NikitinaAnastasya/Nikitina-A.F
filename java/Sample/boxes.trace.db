@@ -1,0 +1,8 @@
+2022-11-24 08:20:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select * [*]ftom box"
+Syntax error in SQL statement "select * [*]ftom box"; SQL statement:
+select * ftom box [42000-214]
+2022-12-01 08:14:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "alter table fruit add foreign key (box_id) [*]reference box(id)"; ожидалось "INDEX, REFERENCES"
+Syntax error in SQL statement "alter table fruit add foreign key (box_id) [*]reference box(id)"; expected "INDEX, REFERENCES"; SQL statement:
+alter table fruit add foreign key (box_id) reference box(id) [42001-214]
