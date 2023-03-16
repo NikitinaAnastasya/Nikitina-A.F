@@ -1,15 +1,14 @@
 package view;
 
-import conteiner.Token;
+import history.Log;
 import model.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Menu {
     Scanner scanner = new Scanner(System.in);
     Tokenizer tokenizer = new Tokenizer();
+    Log log = new Log();
 
 
     public void menu(){
@@ -20,7 +19,7 @@ public class Menu {
 
         switch (scanner.nextInt()){
             case 1 -> {
-                System.out.println("В РАЗРАБОТКЕ") ;
+                log.readFile();
                 menu();
             }
             case 2 -> start();
@@ -34,7 +33,11 @@ public class Menu {
         String primer = scanner.next();
 
         Calculator calculator = new Calculator(tokenizer.tokenizer(primer));
-        System.out.println(primer + " = " + calculator.calculate());
+
+        String rezult = String.valueOf(calculator.calculate());
+        System.out.println(primer + " = " + rezult);
+
+        log.writFile(primer,rezult);
 
         menu();
     }

@@ -3,6 +3,7 @@ package model;
 import conteiner.Token;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Vector;
 
 public class Tokenizer {
@@ -29,7 +30,6 @@ public class Tokenizer {
 
     }
 
-
     void detection(String[] x){
         int a =0;
         for (int i=0;i<x.length;i++) {
@@ -38,20 +38,28 @@ public class Tokenizer {
                 a=1;
             }else{
                 a = 1;
-                if (isDigit(x[i]) ){
-                    bufferInt.add(x[i]);
+                if(Objects.equals(x[i], ".") | Objects.equals(x[i], ",")){
+                    if (Objects.equals(x[i], ",")){
+                        bufferInt.add(".");
+                    }else {
+                        bufferInt.add(x[i]);
+                    }
                 }else {
-                    if (isOperator(x[i])){
-                        if (isValid(x[i-1])){
-                            bufferInt.add(x[i]);
-                        }else {
-                            Buffer(bufferInt);
-                            rezult.add(  new Token("Оператор",x[i]));
-                        }
-                    }else{
-                        if (isValid(x[i])){
-                            Buffer(bufferInt);
-                            rezult.add(new Token("Скобка",x[i]));
+                    if (isDigit(x[i]) ){
+                        bufferInt.add(x[i]);
+                    }else {
+                        if (isOperator(x[i])){
+                            if (isValid(x[i-1])){
+                                bufferInt.add(x[i]);
+                            }else {
+                                Buffer(bufferInt);
+                                rezult.add(  new Token("Оператор",x[i]));
+                            }
+                        }else{
+                            if (isValid(x[i])){
+                                Buffer(bufferInt);
+                                rezult.add(new Token("Скобка",x[i]));
+                            }
                         }
                     }
                 }
@@ -68,7 +76,7 @@ public class Tokenizer {
     //Проверка на число
     boolean isDigit(String ch){
         try {
-            Integer.valueOf(ch);
+            Double.valueOf(ch);
             return true;
         }catch (NumberFormatException e){
             return false;
