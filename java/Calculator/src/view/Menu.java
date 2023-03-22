@@ -39,6 +39,10 @@ public class Menu {
 
         log.writFile(primer,rezult);
 
+
+//        tokenizer.tokenizer(primer);
+//        System.out.println(primer);
+
         menu();
     }
 
