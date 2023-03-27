@@ -1,30 +1,44 @@
 package history;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Log {
-    private final String path = "C:/Users/Xaker/IdeaProjects/calculator/log.txt";
-    public void writFile(String x, String rezult){
-        try(FileWriter writer = new FileWriter(path, true))
-        {
-            writer.append(x).append(" = ").append(rezult).append(String.valueOf('\n'));
+    Scanner scanner = new Scanner(System.in);
+    private final String path = "C:/Users/Xaker/IdeaProjects/calculator/save/";
+    private final String nameLog = "log.txt";
+    private final String lastStart = "C:/Users/Xaker/IdeaProjects/calculator/save/lastStart.txt";
 
-            writer.flush();
+    public void writeFile(ArrayList<String> x,String line,String nameFile){
+
+        if (line.equals("0")){
+            line = path;
+        }
+        if (nameFile.equals("0")){
+            nameFile = nameLog;
+        }
+        try(FileWriter writer = new FileWriter(line + nameFile, true))
+        {
+                for (String d : x) {
+                    writer.append(d).append(String.valueOf('\n'));
+
+                    writer.flush();
+                }
         }
         catch(IOException ex){
 
             System.out.println(ex.getMessage());
         }
     }
-    public void readFile(){
-        try(FileReader reader = new FileReader(path))
+    public void writeLastStart(ArrayList<String> x){
+        try(FileWriter writer = new FileWriter(lastStart, false))
         {
-            int c;
-            while((c=reader.read())!=-1){
+            for (String d : x){
+                writer.append(d).append(String.valueOf('\n'));
 
-                System.out.print((char)c);
+                writer.flush();
             }
         }
         catch(IOException ex){
@@ -32,4 +46,91 @@ public class Log {
             System.out.println(ex.getMessage());
         }
     }
+    public void writeFileName(String line , String nameFile , ArrayList<String> x){
+
+        if (line.equals("0")){
+            line = path;
+        }
+        if ( nameFile.equals("0.txt")){
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            String time = String.valueOf(timestamp).replace(":","-");
+            nameFile = time+".txt";
+        }
+
+        File file = new File(line + nameFile);
+        System.out.println(line + nameFile);
+
+        if(!file.exists() && !file.isDirectory()) {
+            try {
+                if (file.createNewFile()){
+                    System.out.println("File is created!");
+
+                        writeFile(x, line,nameFile);
+                }
+                else{
+                    System.out.println("File already exists.");
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            if(!file.exists()){
+                System.out.println("Не найден путь!!!\n" +
+                        "Введите другой путь");
+                line = scanner.next();
+                writeFileName(line,nameFile + ".txt",x);
+
+            }
+            if (!file.isDirectory()){
+                System.out.println("Файл с таким именем уже существует!!!\n" +
+                        "Введите другое имя файла");
+                nameFile = scanner.next();
+                writeFileName(line,nameFile,x);
+            }
+        }
+
+
+    }
+    public ArrayList<String> readFile(){
+        try(BufferedReader read = new BufferedReader(new FileReader(path)))
+        {
+            ArrayList<String> log = new ArrayList<>();
+            String line = read.readLine();
+            while (line != null) {
+
+                log.add(line);
+                line = read.readLine();
+
+            }
+
+            return log;
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    public ArrayList<String> readLastStart(){
+        try(BufferedReader read = new BufferedReader(new FileReader(lastStart)))
+        {
+            ArrayList<String> log = new ArrayList<>();
+
+            String line = read.readLine();
+            while (line != null) {
+
+                log.add(line);
+                line = read.readLine();
+
+            }
+
+            return log;
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
 }

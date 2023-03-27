@@ -27,7 +27,9 @@ public class Tokenizer {
             }
         }
 
-        rezult.forEach(System.out::println);
+        //для проверки Tokenizer
+
+        //rezult.forEach(System.out::println);
 
         return rezult;
 
